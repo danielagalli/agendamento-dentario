@@ -186,214 +186,25 @@ document.querySelector(".login-topo").style.display = "none";
 
     document.getElementById('horarios-container').style.display = 'block';
   }    
-    const horariosFixos = [
-  "08:00", "09:00", "10:00", "11:00",
-  "13:00", "14:00", "15:00", "16:00"
-];
+   const diasContainer = document.getElementById("dias");
+    const mesAno = document.getElementById("mesAno");
+    const hoje = new Date();
+    const ano = hoje.getFullYear();
+    const mes = hoje.getMonth();
 
-let agendamentos = JSON.parse(localStorage.getItem("appointments")) || [];
+    const nomesMeses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+                        "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
 
-function mostrarHorarios() {
-  const data = document.getElementById("dataEscolhida").value;
-  const container = document.getElementById("horariosDisponiveis");
-
-  if (!data) {
-    container.innerHTML = "";
-    return;
-  }
-
-  const ocupados = agendamentos
-    .filter(app => app.date === data)
-    .map(app => app.time);
-
-  const lista = horariosFixos.map(horario => {
-    const ocupado = ocupados.includes(horario);
-    return `<div class="horario ${ocupado ? 'indisponivel' : 'disponivel'}">
-              ${horario} - ${ocupado ? "Indisponível" : "Disponível"}
-            </div>`;
-  }).join("");
-
-  container.innerHTML = `<h2>Horários para ${formatarData(data)}</h2>${lista}`;
-}
-
-function formatarData(dataISO) {
-  const [ano, mes, dia] = dataISO.split("-");
-  return `${dia}/${mes}/${ano}`;
-}
-
-    let dataSelecionada = "";
-    let horarioSelecionado = "";
-
-    function mostrarHorarios() {
-      const data = document.getElementById("dataEscolhida").value;
-      const container = document.getElementById("horariosDisponiveis");
-      document.getElementById("formAgendamento").style.display = "none";
-      dataSelecionada = data;
-
-      if (!data) {
-        container.innerHTML = "";
-        return;
-      }
-
-      const ocupados = agendamentos
-        .filter(app => app.date === data)
-        .map(app => app.time);
-
-      const listaHorarios = horariosFixos.map(horario => {
-        const ocupado = ocupados.includes(horario);
-        return `
-          <div class="horario ${ocupado ? 'indisponivel' : 'disponivel'}"
-               onclick="${ocupado ? '' : `selecionarHorario('${horario}')`}">
-            ${horario} - ${ocupado ? "Indisponível" : "Disponível"}
-          </div>`;
-      }).join("");
-
-      container.innerHTML = `
-        <h2>Horários para ${formatarData(data)}</h2>
-        ${listaHorarios}
-      `;
-    }
-
-    function selecionarHorario(horario) {
-      horarioSelecionado = horario;
-      document.getElementById("formAgendamento").style.display = "block";
-      document.getElementById("resumoEscolha").textContent =
-        `Data: ${formatarData(dataSelecionada)} | Horário: ${horarioSelecionado}`;
-    }
-
-    function confirmarAgendamento() {
-      const nome = document.getElementById("nomePaciente").value.trim();
-
-      if (!nome) {
-        alert("Por favor, digite seu nome.");
-        return;
-      }
-
-      agendamentos.push({
-        name: nome,
-        date: dataSelecionada,
-        time: horarioSelecionado
-      });
-
-      localStorage.setItem("appointments", JSON.stringify(agendamentos));
-      alert("Agendamento confirmado com sucesso!");
-
-      // Resetar
-      document.getElementById("formAgendamento").style.display = "none";
-      document.getElementById("nomePaciente").value = "";
-      mostrarHorarios();
-    }
-
-    function formatarData(dataISO) {
-      const [ano, mes, dia] = dataISO.split("-");
-      return `${dia}/${mes}/${ano}`;
-    }
-  /**AGENDAMENTO*/
-  const calendario = document.getElementById("calendario");
-  const containerHorarios = document.getElementById("horariosDisponiveis");
-  const resumo = document.getElementById("resumoEscolha");
-
-  let dataSelecionada = "";
-  let horarioSelecionado = "";
-
-  const horariosFixos = ["08:00", "09:30", "11:00", "14:00", "15:30", "17:00"];
-  let agendamentos = JSON.parse(localStorage.getItem("appointments")) || [];
-
-  function gerarCalendario(mes, ano) {
-    calendario.innerHTML = "";
-    const diasSemana = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
-    diasSemana.forEach(dia => {
-      const header = document.createElement("div");
-      header.textContent = dia;
-      header.style.fontWeight = "bold";
-      calendario.appendChild(header);
-    });
+    mesAno.textContent = `${nomesMeses[mes]} ${ano}`;
 
     const primeiroDia = new Date(ano, mes, 1).getDay();
     const totalDias = new Date(ano, mes + 1, 0).getDate();
 
     for (let i = 0; i < primeiroDia; i++) {
-      const vazio = document.createElement("div");
-      calendario.appendChild(vazio);
+      diasContainer.innerHTML += `<div></div>`;
     }
 
     for (let dia = 1; dia <= totalDias; dia++) {
-      const celula = document.createElement("div");
-      celula.className = "dia";
-      celula.textContent = dia;
-      celula.onclick = () => selecionarDia(dia, mes, ano, celula);
-      calendario.appendChild(celula);
+      const classeHoje = (dia === hoje.getDate()) ? "hoje" : "";
+      diasContainer.innerHTML += `<div class="${classeHoje}">${dia}</div>`;
     }
-  }
-
-  function selecionarDia(dia, mes, ano, celula) {
-    document.querySelectorAll(".dia").forEach(d => d.classList.remove("selecionado"));
-    celula.classList.add("selecionado");
-
-    const data = new Date(ano, mes, dia);
-    dataSelecionada = data.toISOString().split("T")[0]; // formato YYYY-MM-DD
-    mostrarHorarios();
-  }
-
-  function mostrarHorarios() {
-    document.getElementById("formAgendamento").style.display = "none";
-    horarioSelecionado = "";
-
-    const ocupados = agendamentos
-      .filter(app => app.date === dataSelecionada)
-      .map(app => app.time);
-
-    const listaHorarios = horariosFixos.map(horario => {
-      const ocupado = ocupados.includes(horario);
-      return `
-        <div class="horario ${ocupado ? 'indisponivel' : 'disponivel'}"
-             onclick="${ocupado ? '' : `selecionarHorario('${horario}')`}">
-          ${horario} - ${ocupado ? "Indisponível" : "Disponível"}
-        </div>`;
-    }).join("");
-
-    containerHorarios.innerHTML = `
-      <h2>Horários para ${formatarData(dataSelecionada)}</h2>
-      ${listaHorarios}
-    `;
-  }
-
-  function selecionarHorario(horario) {
-    horarioSelecionado = horario;
-    document.getElementById("formAgendamento").style.display = "block";
-    resumo.textContent = `Data: ${formatarData(dataSelecionada)} | Horário: ${horarioSelecionado}`;
-  }
-
-  function confirmarAgendamento() {
-    const nome = document.getElementById("nomePaciente").value.trim();
-    if (!nome) {
-      alert("Por favor, digite seu nome.");
-      return;
-    }
-
-    agendamentos.push({
-      name: nome,
-      date: dataSelecionada,
-      time: horarioSelecionado
-    });
-
-    localStorage.setItem("appointments", JSON.stringify(agendamentos));
-    alert("Agendamento confirmado com sucesso!");
-
-    document.getElementById("formAgendamento").style.display = "none";
-    document.getElementById("nomePaciente").value = "";
-    mostrarHorarios();
-  }
-
-  function formatarData(dataISO) {
-    const [ano, mes, dia] = dataISO.split("-");
-    return `${dia}/${mes}/${ano}`;
-  }
-
-  // Inicialização
-  const hoje = new Date();
-  gerarCalendario(hoje.getMonth(), hoje.getFullYear());
-</script>
-
-
-
