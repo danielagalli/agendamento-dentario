@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clínica Sorriso Brilhante</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="login.html">
+  
+</head>
+<body>
+
+  <header>
+    <h1>Clínica Sorriso Brilhante</h1>
+    <p>Transformando sorrisos todos os dias</p>
+  </header>
+
+<section>
+  <div class="menu-personalizado">
+
+    <a href="sobre-mim.html"><button>Sobre Mim</button></a>
+    <a href="minha-historia.html"><button>Minha História</button></a>
+    <a href="contato.html"><button>Contato</button></a>
+    <a href="agendamentos.html"><button>Agende sua Avaliação</button></a>
+  </div> 
+
+</section>
+
+<div id="calendario-container" style="display: none; margin-top: 15px;">
+  <label for="data-avaliacao">Escolha a data:</label>
+  <input type="date" id="data-avaliacao" name="data-avaliacao">
+</div>
+
+<section id="feed-carrossel">
+
+  <h2>Novidades no Consultório</h2>
+
+  <div class="carrossel-container">
+
+    <div class="carrossel-slide">
+      <img src="imagens/conceito-de-higiene-dental-com-dente.jpg"  alt="Semana do Sorriso">
+      <div class="descricao-slide">
+        <h3>🪥 Semana do Sorriso</h3>
+        <p>Momentos especiais com crianças da rede pública ensinando sobre saúde bucal com diversão.</p>
+        <span>Postado em 22/06/2025</span>
+      </div>
+    </div>
+
+    <div class="carrossel-slide">
+      <img src="imagens/aniversariante.jpg" alt="aniversario da clinica">
+      <div class="descricao-slide">
+        <h3>🎉 5 Anos de Gratidão</h3>
+        <p>Celebramos mais um ano com pacientes e equipe — teve bolo, sorrisos e emoção!</p>
+        <span>Postado em 10/06/2025</span>
+      </div>
+    </div>
+
+    <div class="carrossel-slide">
+      <img src="imagens/promocao.png" alt="Dia da Prevenção">
+      <div class="descricao-slide">
+        <h3>🔍 Dia da Prevenção</h3>
+        <p>Atendimento gratuito e orientações para toda a comunidade. Cuidar é nossa essência.</p>
+        <span>Postado em 02/06/2025</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="botoes-controle">
+    <button onclick="mudarSlide(-1)">⟨</button>
+    <button onclick="mudarSlide(1)">⟩</button>
+  </div>
+  <div class="indicadores">
+    <span class="indicador ativo" onclick="mostrarSlide(0)"></span>
+    <span class="indicador" onclick="mostrarSlide(1)"></span>
+    <span class="indicador" onclick="mostrarSlide(2)"></span>
+  </div>
+
+</section>
+
+<section id="depoimentos">
+  <h2>O que dizem nossos pacientes</h2>
+
+  <div class="depoimento">
+    <p>🗨️ “Nunca imaginei que ir ao dentista pudesse ser tão leve! Me senti acolhido desde a recepção até o atendimento final.”</p>
+    <span>– João S.</span>
+  </div>
+
+  <div class="depoimento">
+    <p>🗨️ “A equipe é maravilhosa, super atenciosa. Meu sorriso ficou do jeitinho que eu sonhava!”</p>
+    <span>– Camila R.</span>
+  </div>
+
+  <div class="depoimento">
+    <p>🗨️ “Profissionalismo, empatia e tecnologia — essa clínica é tudo isso e mais um pouco.”</p>
+    <span>– Rafael L.</span>
+  </div>
+</section>
+
+<section id="contato">
+    <h2>Contato</h2>
+    <p>📍 Rua do Sorriso, 123 – Pato Branco, PR<br>
+      📞 (46) 99999-0000<br>
+      📧 atendimento@sorrisobrilhante.com</p>
+  </section>
+
+  <section>
+    <footer>
+      <p>&copy; 2025 Clínica Sorriso Brilhante – Todos os direitos reservados.</p>
+    </footer>
+  </section>
+
+  <script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</body>
+</html>

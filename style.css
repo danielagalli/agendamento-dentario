@@ -1,0 +1,388 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9fbfd;
+}
+
+header{
+  background-color: #0077cc;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+section {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+  
+}
+
+input, button {
+  padding: 10px;
+  margin: 5px;
+}
+
+#agendaSection {
+  display: none;
+  background-color: #eef6fb;
+  border-radius: 8px;
+}
+
+.calendario {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.calendario td, .calendario th {
+  border: 1px solid #ccc;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.calendario td:hover {
+  background-color: #b3e5fc;
+}
+.menu-personalizado {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.menu-personalizado button {
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  margin: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+.menu-personalizado button:hover {
+  background-color: #005fa3;
+}
+
+.conteudo-aba {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #f4f9fc;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.login-direita {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+
+}
+
+@media (max-width: 768px) {
+  .login-direita {
+    margin: 20px auto;
+  }
+}
+#feed {
+  padding: 30px 20px;
+  background-color: #f0f8ff;
+  max-width: 800px;
+  margin: auto;
+  border-radius: 8px;
+}
+
+.feed-item {
+  background-color: white;
+  border-left: 4px solid #0077cc;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  border-radius: 4px;
+}
+
+.feed-item h3 {
+  margin-top: 0;
+}
+
+.data-postagem {
+  font-size: 0.85rem;
+  color: #666;
+}
+#feed {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f4faff;
+  border-radius: 10px;
+}
+
+.feed-item {
+  display: flex;
+  background: white;
+  border-left: 5px solid #0077cc;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  overflow: hidden;
+}
+
+.feed-item img {
+  width: 200px;
+  object-fit: cover;
+}
+
+.texto-feed {
+  padding: 15px 20px;
+}
+
+.texto-feed h3 {
+  margin-top: 0;
+  color: #0077cc;
+}
+
+.data-postagem {
+  font-size: 0.85rem;
+  color: #666;
+}
+#feed-carrossel {
+  max-width: 800px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.carrossel-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.carrossel-slide {
+  display: none;
+  animation: fade 0.5s ease-in-out;
+}
+
+.carrossel-slide.ativo {
+  display: block;
+}
+
+.carrossel-slide img {
+  width: 100%;
+  max-height: 350px;
+  object-fit: cover;
+  display: block;
+}
+
+.descricao-slide {
+  padding: 20px;
+  background-color: #f3faff;
+  text-align: left;
+}
+
+.botoes-controle {
+  margin-top: 10px;
+}
+
+.botoes-controle button {
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+.botoes-controle button:hover {
+  background-color: #005fa3;
+}
+
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.indicadores {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.indicador {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-color: #ccc;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.indicador.ativo {
+  background-color: #0077cc;
+}
+#depoimentos {
+  background-color: #eef6fb;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.depoimento {
+  background: white;
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 20px;
+  border-left: 4px solid #0077cc;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border-radius: 6px;
+  font-style: italic;
+}
+.depoimento span {
+  display: blocks
+}
+.login-topo {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  background-color: #f0f8ff;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+.login-topo input {
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-topo button {
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.login-topo button:hover {
+  background-color: #005fa3;
+}
+.mensagem-sucesso {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  animation: fadeOut 3s ease-in-out forwards;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; display: none; }
+}
+
+.botao-agendar:hover {
+    background-color: #0056b3; /* Azul mais escuro no hover */
+}
+
+.botao-agendar {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .botao-agendar:hover {
+    background-color: #218838;
+  }
+
+  input[type="date"] {
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+.botao-agendar {
+    background-color: #007BFF;
+    color: white;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .botao-agendar:hover {
+    background-color: #0056b3;
+  }
+
+  input[type="date"], select {
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+  }
+body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h1 {
+      color: white;
+    }
+
+    .horario {
+      margin: 8px 0;
+      padding: 10px;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .disponivel {
+      background-color: #c8e6c9;
+      color: #2e7d32;
+      cursor: pointer;
+    }
+
+    .indisponivel {
+      background-color: #ffcdd2;
+      color: #c62828;
+      cursor: not-allowed;
+    }
+/*Agendamento.html**/
+.formAgendamento{
+  background-color: #c3e6cb;
+}
+
+/*AGENDAMENTO*/
+.horario {
+  margin: 5px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+.disponivel {
+  background-color: #e0f7fa;
+}
+.indisponivel {
+  background-color: #ffcdd2;
+  cursor: not-allowed;
+}
